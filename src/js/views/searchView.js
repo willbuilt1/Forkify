@@ -8,7 +8,7 @@ export const clearInput = function(){
 export const clearResults = function(){
     elements.searchResList.innerHTML = '';
 };
-
+// Checks title length. If longer than limit trims it. Function used in render method
 const limitRecipe = (title, limit = 17) => { //default parameter
     const newTitle = [];
     if(title.length > limit){
@@ -23,7 +23,7 @@ const limitRecipe = (title, limit = 17) => { //default parameter
     }
     return title
 };
-
+// HTML markup for each recipe to be inserted in list
 const renderRecipe = function(recipe){
     const markup = `
         <li>
@@ -41,7 +41,7 @@ const renderRecipe = function(recipe){
     
         elements.searchResList.insertAdjacentHTML('beforeend', markup);
 }
-
+// Function recieves recipies array from state and renders markup above.
 export const renderResults = recipes => {
     recipes.forEach(renderRecipe);//forEach(recipe => renderRecipe(recipe));
 }
