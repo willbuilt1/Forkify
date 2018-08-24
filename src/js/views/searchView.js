@@ -30,7 +30,7 @@ const limitRecipe = (title, limit = 17) => { //default parameter
 const renderRecipe = function(recipe){
     const markup = `
         <li>
-            <a class="results__link" href="${recipe.recipe_id}">
+            <a class="results__link" href="#${recipe.recipe_id}">
                 <figure class="results__fig">
                     <img src="${recipe.image_url}" alt="${recipe.title}">
                 </figure>
@@ -48,7 +48,6 @@ const renderRecipe = function(recipe){
 // type either prev or next
 // implicit return using arrow function
 const createButton = (page, type) => `
-
 <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
     <svg class="search__icon">
         <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
