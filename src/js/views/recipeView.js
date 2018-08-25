@@ -1,5 +1,5 @@
 import { elements } from "./base";
-import { Fraction } from 'fractional';
+import Fraction from 'fraction.js';
 
 export const clearRecipe = () => {
     elements.recipe.innerHTML= '';
@@ -7,7 +7,22 @@ export const clearRecipe = () => {
 
 const formatCount = count => {
     if (count){
+            const fr = new Fraction(count).simplify(0.00001);
+            return fr.toFraction(true);
+        /*
+        // Previous method using fractional.js. Found that this did not deal with recurring digits and implentation quite long so used Fraction.js instead(above)
+        
+        const [int, dec] = count.toString().split('.').map(el=> parseInt(el, 10));
 
+        if(!dec) return count;
+
+        if(int === 0){
+            const fr = new Fraction(count);
+            return `${fr.numerator}/${fr.denominator}`;
+        }else{
+            const fr = new Fraction(count - int);
+            return `${int} ${fr.numerator}/${fr.denominator}`;
+        }*/
     }
     return '?'
 }
@@ -16,7 +31,7 @@ const createIngredient = ingredient => `
         <svg class="recipe__icon">
             <use href="img/icons.svg#icon-check"></use>
         </svg>
-        <div class="recipe__count">${ingredient.count}</div>
+        <div class="recipe__count">${formatCount(ingredient.count)}</div>
             <div class="recipe__ingredient">
                 <span class="recipe__unit">${ingredient.unit}</span>
                 ${ingredient.ingredient};
