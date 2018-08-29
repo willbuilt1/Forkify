@@ -35,6 +35,7 @@ class Recipe {
 
         const longUnits = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'cup', 'pounds', 'pound'];
         const shortUnits = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cups', 'cup', 'lbs', 'lb'];
+        const units = [...shortUnits, 'kg', 'g'];
 
         const newIngredients = this.ingredients.map(el => {
         // 1. uniform units
@@ -49,7 +50,7 @@ class Recipe {
         const arrIng = ingredient.split(' ');
         
         // where in array is units? findIndex returns index or -1 if not found
-        const unitIndex = arrIng.findIndex(el2 => shortUnits.includes(el2));
+        const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
         
         let objIng;
         //If there is a unit

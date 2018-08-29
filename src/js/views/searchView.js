@@ -11,6 +11,14 @@ export const clearResults = function(){
     //Clear buttons
     elements.searchResPages.innerHTML = '';
 };
+
+export const highlightSelected = id => {
+    const resultsArr = Array.from(document.querySelectorAll('.results__link'));
+    resultsArr.forEach(el => {
+        el.classList.remove('results__link--active');
+    })
+    document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+}
 // Checks title length. If longer than limit trims it. Function used in render method
 const limitRecipe = (title, limit = 17) => { //default parameter
     const newTitle = [];
