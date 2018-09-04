@@ -20,7 +20,7 @@ export const highlightSelected = id => {
     document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
 }
 // Checks title length. If longer than limit trims it. Function used in render method
-const limitRecipe = (title, limit = 17) => { //default parameter
+export const limitRecipe = (title, limit = 17) => { //default parameter
     const newTitle = [];
     if(title.length > limit){
         title.split(' ').reduce((acc, cur) => {
