@@ -15,6 +15,7 @@ export const renderItem = item => {
             </button>
         </li>
     `;
+    elements.shopping.style.display = "block";
     elements.shopping.insertAdjacentHTML('beforeend', markup);
 };
 
